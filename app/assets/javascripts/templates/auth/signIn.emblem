@@ -1,0 +1,24 @@
+h1.thin.push-half--top Sign In
+form
+  if view.errors
+    .error-explanation = displayErrors view.errors root="devise"
+  ul.form-fields
+    li
+      Omphalo.TextField valueBinding="view.email" placeholder="Email"
+    li
+      Omphalo.TextField valueBinding="view.password" type="password" placeholder="Password"
+    li
+      label
+        Omphalo.Checkbox checkedBinding="view.remember"
+        span.push-half--left Remember me?
+
+    li
+      Omphalo.Button
+
+hr.rule.push--top
+
+  Omphalo.AuthRegisterLinkView text="Are you new?"
+
+hr.rule.push--top
+
+  Omphalo.AuthPasswordRecoveryLinkView text="Forgot your password?"

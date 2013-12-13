@@ -1,0 +1,834 @@
+@charset "UTF-8"
+
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:400,700)
+@import url(http://fonts.googleapis.com/css?family=Questrial)
+@import "vars"
+@import "inuit.css/inuit"
+
+.secondary-font
+  font-family: 'Questrial', sans-serif
+
+
+// Mixins
+
+@mixin opacity($value)
+  -moz-opacity: $value/100!important
+  -khtml-opacity: $value/100!important
+  opacity: $value/100!important
+  filter: alpha(opacity = $value)!important
+
+@mixin unmutable
+  @include opacity(100)
+
+@mixin hover-popout
+  &:hover, &:focus
+    @include unmutable
+    box-shadow: 0 0 18px 11px $main-border
+
+@mixin transition($speed)
+  -webkit-transition: all $speed ease               
+  -moz-transition: all $speed ease               
+  -o-transition: all $speed ease
+  -ms-transition: all $speed ease   
+  transition: all $speed ease
+
+// Main
+
+html, body
+  height: 100%
+  line-height: 24px
+
+html, body, header
+  min-width: 960px
+
+body 
+  background: $main-background
+  color: $main-color
+
+*
+  @include transition(0.5s)
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+  background-repeat: no-repeat
+  position: relative
+
+a
+  color: $main-color
+  text-decoration: none
+
+a:hover, a:focus, .btn:hover, .btn:focus, .active, .flash-item:hover
+  @extend .muted
+  outline: 0
+
+h1, h2, h3, h4, h5, h6, .alpha, .beta, .gamma, .delta, .epsilon, .zeta
+  @extend .secondary-font
+
+p
+  @extend .push-half--ends
+
+input, textarea, select
+  @extend .soft-half--sides
+  @extend .milli
+  height: 36px
+  width: 100%
+  border-radius: 0
+  border: thin solid $main-border
+  &:focus
+    border-color: $highlight
+
+input[type="file"]
+  @extend .hard--sides
+  border: 0
+  height: auto
+
+input[type="checkbox"]
+  height: 16px
+  width: 16px
+  vertical-align: baseline
+
+select
+  @extend .hard--right
+  padding-left: ($base-line-height/2) - 5px
+  padding-top: 3px
+  background: #fff
+
+textarea
+  @extend .soft-half
+  height: 324px
+  width: 105%
+  resize: none
+  background: $almost-white
+  box-shadow: 0 2px 3px 2px $header-background-focus
+
+code
+  font-size: 14px
+  font-weight: 700
+
+.main-output
+  @extend .soft
+  display: inline-block
+  vertical-align: top
+  width: 62%
+
+.side-output
+  display: inline-block
+  width: 38%
+  height: 100%
+  background: $bubble-background
+  border-left: thin solid $header-background-focus
+
+
+// Buttons
+
+.btn
+  @extend .push--ends
+  @extend .soft--sides
+  height: 40px
+  width: 150px
+  background: $highlight
+  color: #FFF
+  font-weight: 700
+  border: 0
+  border-radius: 0
+
+.btn--follow
+  @extend .soft-half--top
+  @extend .secondary-font
+  background: $header-background-focus
+  display: inline-block
+  width: 200px
+  cursor: pointer
+  text-align: center
+  &:focus, &:hover
+    @include unmutable
+    background: $header-background
+
+.btn--unfollow
+  background: $header-background
+  &:focus, &:hover
+    background: $header-background-focus
+
+.follow--icon
+  display: inline-block
+  height: 22px
+  width: 22px
+  background-image: url(image_path('icons/follow.png'))
+
+// Lightbox
+
+#lightbox-mask
+  @include opacity(35)
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: #FFF
+  z-index: 1000
+
+#lightbox
+  @extend .soft
+  z-index: 1001
+  position: fixed
+  left: 50%
+  margin-left: -195px
+  top: 15%
+  width: 390px
+  background: $header-background
+  border: thin solid $header-border
+  text-align: center
+  color: $header-color
+  a, .rule
+    color: $header-color
+
+// Lists
+
+.bubble-list
+  @extend .flush
+  position: relative
+  list-style-type: none
+  li
+    @extend .soft
+    @extend .soft-half--ends
+    background: $bubble-background
+    box-shadow: 0 0 3px 2px $header-background-focus
+
+.bubble-list--flushed
+  top: -18px
+  left: -18px
+
+.user-list
+  @extend .flush
+  list-style-type: none
+  max-width: 350px
+  border-top: thin solid $header-background-focus
+  border-bottom: thin solid $bubble-background
+  li
+    @extend .soft
+    @extend .soft-half--ends
+    border-top: thin solid $bubble-background
+    border-bottom: thin solid $header-background-focus
+    &:after
+      content: "\00A0" "\00BB"!important
+
+// Utility
+
+.position--right
+  text-align: right
+
+.hidden
+  display: none
+
+.inline-block
+  display: inline-block
+
+.clickable
+  cursor: pointer
+
+.forefront
+  z-index: 50
+
+.muted-extra
+  @include opacity(25)
+
+.background--white
+  background: #FFF
+
+.center
+  text-align: center
+
+.text-align--right
+  text-align: right
+
+.text-align--left
+  text-align: left
+
+.thin
+  font-weight: 300
+
+.thick
+  font-weight: 700
+
+.highlight, .highlight a
+  color: $highlight
+
+.highlight--alt, .highlight--alt a
+  color: $header-background-focus
+
+.milli
+  line-height: $milli-size + 2px
+
+.micro
+  line-height: $micro-size + 2px
+
+.nano
+  font-size: $nano-size
+  line-height: $nano-size + 2px
+
+.push-quarter--top
+  margin-top: $base-line-height/4
+
+.border--top
+  border-top: thin solid $main-color
+
+.border--ends
+  border: thin solid $main-color
+  border-left: 0
+  border-right: 0
+
+.note
+  @extend .micro
+  @extend .thick
+
+.note:before
+  content: "***"
+
+.return
+  @extend .milli
+  a
+    @extend .highlight
+    &:before
+      content: "\00AB" "\00A0"!important
+
+.nav
+  list-style: none
+  margin-left: 0
+  li
+    display: inline-block
+
+.nav--stacked
+  li
+    @extend .push-half--bottom
+    display: block
+  .active:after
+    content: "\00A0" "\00BB"!important
+
+.icon--width
+  width: 57px
+
+.icon
+  @extend .icon--width
+  @extend .push-half--right
+  display: inline-block
+  height: 57px
+
+// Header
+
+header
+  position: fixed
+  z-index: 100
+  width: 100%
+  height: $base-line-height * 2
+  box-shadow: 0 0 2px 1px $header-background
+  background: $header-background
+
+.nav--header
+  color: $header-color
+  position: absolute
+  top: 0
+  font-weight: 700
+  a
+    @extend .soft-half
+    @extend .secondary-font
+    vertical-align: top
+    display: inline-block
+    text-align: center
+    color: $header-color
+    font-size: 16px
+    line-height: 18px
+  .active, a:hover, a:focus
+    @include unmutable
+    background: $header-background-focus
+
+.nav--left
+  left: 9px
+
+.logo
+  a
+    font-size: 18px
+
+// Main
+
+.center-column-margins
+  margin-left: 200px + ($base-line-height * 2)
+  margin-right: 265px + ($base-line-height * 2)
+  
+#main
+  padding-top: $base-line-height * 2
+
+#main-column--left
+  @extend .soft
+  @include opacity(65)
+  @include hover-popout
+  position: fixed
+  top: $base-line-height * 3
+  left: 0
+  height: 100%
+  width: 200px + ($base-line-height * 2)
+  background: #FFF
+  overflow: hidden
+
+#main-column--center
+  @extend .center-column-margins
+  @extend .soft
+  overflow: hidden
+
+#main-column--right
+  @extend .soft
+  @extend .hard--sides
+  @include opacity(65)
+  @include hover-popout
+  position: fixed
+  top: $base-line-height * 3
+  right: 0
+  height: 100%
+  width: 265px + ($base-line-height * 2)
+  background: #FFF
+  overflow: hidden
+
+.banner
+  @extend .soft
+  color: #FFF
+  width: 100%
+  background: $header-background-focus
+  h1
+    margin-bottom: 0
+  a
+    @include unmutable
+    color: #FFF
+
+.profile__item
+  @extend .soft-half--ends
+  @extend .push--right
+  display: inline-block
+  width: 200px
+  vertical-align: top
+
+.collapsed--left
+  .center-column-margins
+    margin-left: 0
+    margin-right: 265px + ($base-line-height * 2)
+
+@media screen and (max-width: 1100px)
+  .unstable--left
+    .center-column-margins
+      margin-left: 0
+      margin-right: 265px + ($base-line-height * 2)
+
+    #main-column--left
+      @include unmutable
+      @extend .center-column-margins
+      position: relative
+      top: 0
+      left: 0
+      width: auto
+      .profile__interaction
+        vertical-align: -500%
+        margin-left: $base-line-height * 2
+
+    #main-column--right
+      @include unmutable
+
+  .unstable--right
+    .center-column-margins
+      margin-left: 200px + ($base-line-height * 2)
+      margin-right: 0
+
+    #main-column--right
+      display: none
+
+@media screen and (max-width: 960px)
+  .unstable--left
+    .center-column-margins
+      margin-right: 0
+      margin-left: 0
+
+    #main-column--left
+      @extend .center-column-margins
+
+    #main-column--right
+      display: none
+
+
+// Resource List
+
+.more
+  font-size: 16px
+  &:after
+    content: "\00A0" "\00BB"!important
+  
+
+.resource
+  @extend .soft-half
+  @extend .push--right
+  @extend .push--bottom
+  @include opacity(65)
+  @include hover-popout
+  display: block
+  width: 200px + ($base-line-height)
+  height: 290px
+  overflow: hidden
+  background-color: #fff
+  text-align: center
+  border: thin solid $main-border
+
+#main-column--right
+  .resource
+    border: 0
+
+.resource-image
+  height: 200px
+  width: 200px
+
+.resource-image--new
+  background-image: url(image_path('icons/new.png'))
+
+.resource-image--default-logo
+  background-image: url(image_path('icons/default-logo.png'))
+
+.resource-image--default-portrait
+  background-image: url(image_path('icons/default-portrait.png'))
+
+.resource-text
+  @extend .push--top
+  height: 52px
+  overflow: hidden
+
+.resource--mini
+  margin: 9px 0 0 12px !important
+  width: 110px + $base-line-height
+  height: 178px
+  &:hover, &:focus
+    box-shadow: 0 0 9px 5px $main-border
+  .resource-image
+    height: 110px
+    width: 110px
+  .resource-text
+    @extend .push-half--top
+    height: 39px
+    font-size: 16px
+    line-height: 18px
+    overflow: hidden
+  .resource-image--new
+    background-image: url(image_path('icons/new-mini.png'))
+  .resource-image--default-logo
+    background-image: url(image_path('icons/default-logo-mini.png'))
+  .resource-image--default-portrait
+    background-image: url(image_path('icons/default-portrait-mini.png'))
+
+#main-column--right
+  .resource--mini  
+    &:hover, &:focus
+      box-shadow: 0 0 9px 5px #eee
+
+.everything-list
+  height: 195px
+  overflow: hidden
+
+// Reports
+
+.new-white-icon
+  display: inline-block
+  width: 32px
+  height: 32px
+  background-image: url(image_path('new-white.png'))
+
+.new-blackish-icon
+  display: inline-block
+  vertical-align: -10%
+  width: 29px
+  height: 29px
+  cursor: pointer
+  background-image: url(image_path('new-blackish.png'))
+
+.disapprove
+  background-image: url(image_path('icons/disapprove.png'))
+
+.approve
+  background-image: url(image_path('icons/approve.png'))
+
+.references
+  column-width: 250px
+  -moz-column-width: 220px
+  -webkit-column-width: 250px
+  li
+    @extend .push--left
+
+.outgoing-link
+  display: inline-block
+  width: 20px
+  height: 20px
+  background-image: url(image_path('icons/outgoing-link.png'))
+
+// Profile
+
+.contact-link--website
+  background-image: url(image_path('icons/website.png'))
+
+.contact-link--facebook
+  background-image: url(image_path('icons/fb.png'))
+
+.contact-link--twitter
+  background-image: url(image_path('icons/tw.png'))
+
+// Timeline
+
+.checkmark
+  background-image: url(image_path('icons/checkmark.png'))
+
+.xmark
+  background-image: url(image_path('icons/xmark.png'))
+
+// Forms
+
+.form-body
+  width: 95%
+  position: relative
+
+.form-fields
+  @extend .push--right
+  width: 100%
+  vertical-align: top
+  display: inline-block
+  li
+    @extend .push-half--bottom
+  li:last-child
+    @extend .flush--bottom
+
+.text-field--half
+  display: inline-block
+  width: 150px - ($base-line-height/4)
+
+.form-actions
+  display: block
+
+.ember-form-tip-box
+  @extend .soft
+  @extend .milli
+  line-height: 18px
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  background: #FFF
+  border: thin dashed $main-border
+  overflow: auto
+  ul
+    list-style-type: circle
+
+.error-explanation
+  @extend .soft
+  @extend .push--bottom
+  background: $highlight
+  color: #FFF
+  width: 100%
+  text-align: left
+  ul
+    @extend .flush
+    list-style-type: none
+    li
+      @extend .push--bottom
+      @extend .hard--left
+    li:last-child
+      @extend .flush--bottom
+
+.autocomplete
+  @extend .flush
+  list-style-type: none
+  border: thin solid $main-border
+  li
+    @extend .flush
+    @extend .soft-half
+    @include opacity(50)
+    border-bottom: thin solid $main-border
+    cursor: pointer
+    background: #FFF
+  li:last-child
+    border: 0
+  li:hover
+    @include opacity(100)
+
+.sub-fields-title
+  @extend .flush--bottom
+
+.sub-fields
+  @extend .soft-half--bottom
+  display: inline-block
+  width: 90%
+
+.sub-fields--remove
+  cursor: pointer
+  display: inline-block
+  vertical-align: top
+  margin-top: 5px
+  width: 10%
+
+// File Upload
+
+.btn--alt
+  @extend .push-half--top
+  width: 100%
+  background: $header-background-focus
+
+.file-upload
+  @extend .push-half--top
+  padding-top: 6px
+  position: relative
+  overflow: hidden
+  background: $header-background-focus
+  text-align: center
+  font-weight: 400
+  input
+    position: absolute
+    top: 0
+    right: 0
+    margin: 0
+    padding: 0
+    cursor: pointer
+    opacity: 0
+    filter: alpha(opacity = 0)
+  .progress-bar
+    height: 100%
+    width: 0
+    background: $header-background
+    position: absolute
+    top: 0
+    left: 0
+
+.upload-icon
+  @extend .push-half--left
+  display: inline-block
+  vertical-align: baseline
+  width: 20px
+  height: 20px
+  background-image: url(image_path('icons/upload.png'))
+
+// WMD
+
+.wmd-panel
+  margin-left: 25%
+  margin-right: 25%
+  width: 50%
+  min-width: 500px
+
+.wmd-button-bar
+  width: 100%
+  background-color: Silver
+
+.wmd-input
+  width: 100%
+  background-color: Gainsboro
+  border: 1px solid DarkGray
+
+.wmd-preview
+  background-color: #c0e0ff
+
+.wmd-button-row
+  @extend .flush
+  position: relative
+  background: $bubble-background
+  box-shadow: 0 -2px 3px 2px $header-background-focus
+  height: 30px
+  width: 105%
+  padding: 5px
+  border: thin solid $main-border
+  border-bottom: 0
+
+.wmd-spacer
+  width: 1px
+  height: 20px
+  margin-left: 14px
+  position: absolute
+  background-color: $main-border
+  display: inline-block
+  list-style: none
+
+.wmd-button
+  width: 20px
+  height: 20px
+  padding-left: 2px
+  padding-right: 3px
+  position: absolute
+  display: inline-block
+  list-style: none
+  cursor: pointer
+  > span
+    background-image: url(image_path('wmd-buttons.png'))
+    background-repeat: no-repeat
+    background-position: 0px 0px
+    width: 20px
+    height: 20px
+    display: inline-block
+
+.wmd-spacer1
+  left: 50px
+
+.wmd-spacer2
+  left: 175px
+
+.wmd-spacer3
+  left: 300px
+
+.wmd-prompt-background
+  background-color: Black
+
+.wmd-prompt-dialog
+  border: 1px solid #999999
+  background-color: #F5F5F5
+  >
+    div
+      font-size: 0.8em
+      font-family: arial, helvetica, sans-serif
+    form > input
+      &[type="text"]
+        border: 1px solid #999999
+        color: black
+      &[type="button"]
+        border: 1px solid #888888
+        font-family: trebuchet MS, helvetica, sans-serif
+        font-size: 0.8em
+        font-weight: bold
+
+// Flash
+
+.ember-flash-container
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 999
+  .flash-item
+    box-shadow: 0 0 6px 2px #aaa
+    &:hover
+      cursor: pointer
+  .flash-content
+    @extend .soft
+    @extend .center-column-margins
+  .error, .alert
+    background: $warning
+    color: $warning-color
+  .notice
+    background: $notice
+    color: $notice-color
+
+// Email
+
+.email--header
+  height: 100px
+  font-size: 40px
+  text-align: center
+  background: $header-background
+  color: $header-color
+  padding: 30px
+
+.email--body
+  font-size: 20px
+  color: $main-color
+
+.email--footer
+  color: $main-color
+  font-size: 14px
+  text-align: center
+  height: 28px
+  padding: 7px

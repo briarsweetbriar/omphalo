@@ -1,0 +1,13 @@
+.banner
+  h1
+    span = linkTo 'user.thoughts' this
+      name
+    if userCanAddThought
+      span.zeta.push--left = linkTo 'user.thoughts.manage' | (Manage)
+
+.main-output
+  outlet
+
+.side-output
+  outlet "thoughtForm"
+  outlet "manageList"

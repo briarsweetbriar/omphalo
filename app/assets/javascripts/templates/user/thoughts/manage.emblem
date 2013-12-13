@@ -1,0 +1,10 @@
+ul.bubble-list
+  li = linkTo 'user.thoughts.manage.new'
+    span.delta Add Thought
+    span.push--left.new-blackish-icon
+  each thought in controller
+    li
+      div
+        div = thought-bubble thought=thought
+        div.micro.push--top = metatagList thought.metatags.content
+        div.micro.push-half--bottom.position--right = linkTo 'user.thoughts.manage.edit' thought | Edit

@@ -1,0 +1,1 @@
+Omphalo.ThoughtController = Ember.ObjectController.extend()

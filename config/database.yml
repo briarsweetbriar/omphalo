@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: omphalo_development
+  pool: 5
+  username: timothythehuman
+  password: naveldataisgooddata
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: omphalo_test
+  pool: 5
+  username: timothythehuman
+  password: naveldataisgooddata
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: omphalo_production
+  pool: 5
+  username: timothythehuman
+  password: naveldataisgooddata

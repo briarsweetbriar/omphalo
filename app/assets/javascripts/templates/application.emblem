@@ -1,0 +1,20 @@
+header
+  ul.nav.nav--header.nav--left
+    li.logo.push--right = linkTo 'home' | Omphalo
+    li.push-half--right = linkTo 'users' | Users
+    if auth.signedIn
+      li
+        linkTo 'user.thoughts' currentUser | Thoughts
+      li
+        Omphalo.AuthSignOutView
+    else
+      li
+        Omphalo.AuthRegisterLinkView text="Register"
+      li
+        Omphalo.AuthSignInLinkView text="Sign In"
+
+Omphalo.LightboxPromptView
+#main
+  = outlet
+
+Omphalo.FlashView

@@ -1,0 +1,1 @@
+Omphalo.UsersController = Em.ArrayController.extend()

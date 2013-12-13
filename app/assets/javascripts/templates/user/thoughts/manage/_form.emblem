@@ -1,0 +1,11 @@
+form submit="submit"
+
+  if errors
+    .error-explanation = displayErrors errors root="thoughts"
+  .form-body
+    ul.form-fields
+      li
+        Omphalo.TextArea valueBinding="description" placeholder="A memory, thought, or feeling, followed by a list of hashtags that describe that experience. Eg, 'I sipped the coffee, but it still burnt my tongue.#coffee#pain#cafe"
+
+  .form-actions.position--right
+    Omphalo.Button
