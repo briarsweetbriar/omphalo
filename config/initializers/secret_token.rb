@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Intothenavel::Application.config.secret_key_base = '87ed77044021d656e66e07c835856e742ced7bb54eaa61926a45b8ceffccb72e8f0f0773c8bc38489c3518736e1e702d1633a2d5ce29fbd4f0d671943004c6b5'
+Intothenavel::Application.config.secret_key_base = ENV['SECRET_TOKEN']
