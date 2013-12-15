@@ -2,7 +2,7 @@ set :application, 'Omphalo'
 set :scm, :git
 set :repository, "https://github.com/timothythehuman/omphalo.git"
 
-set :deploy_to, '/srv/www/omphalo.org'
+set :deploy_to, '/srv/www/omphalo.net'
 server "198.58.126.163", :web, :app, :db, primary: true
 set :user, "timothythehuman"
 

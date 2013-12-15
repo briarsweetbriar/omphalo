@@ -5,7 +5,7 @@ form submit="submit"
   .form-body
     ul.form-fields
       li
-        Omphalo.TextArea valueBinding="description" placeholder="A memory, thought, or feeling, followed by a list of hashtags that describe that experience. Eg, 'I sipped the coffee, but it still burnt my tongue.#coffee#pain#cafe"
+        Omphalo.TextArea valueBinding="description" placeholder="A memory, thought, or feeling, followed by a list of hashtags that describe that experience. Eg, 'I sipped the coffee, but it still burned my tongue.#coffee#pain#cafe'"
 
   .form-actions.position--right
     Omphalo.Button
