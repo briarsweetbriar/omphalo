@@ -37,7 +37,3 @@ Omphalo.UserThoughtsController = Em.ArrayController.extend
         thoughts = metatag.get 'thoughts.content'
         $.each thoughts, (index, thought) ->
           thought.set('stimulation', thought.get('stimulation') + Omphalo.randomInt(1, 3) )
-      setTimeout (=>
-        if Omphalo.isScrolledIntoView $("#bubble_more")
-          @bubbleTop()
-      ), 500

@@ -15,3 +15,4 @@
 
 window.Omphalo = Ember.Application.create()
 
+bubblerID = ""
