@@ -27,6 +27,14 @@ Omphalo.hashMetatags = (metatags) ->
       list += "#"+metatag.get('name')
     return list
 
+Omphalo.isScrolledIntoView = (elem) ->
+  if elem.length > 0
+    docViewTop = $(window).scrollTop()
+    docViewBottom = docViewTop + $(window).height()
+    elemTop = $(elem).offset().top
+    elemBottom = elemTop + $(elem).height()
+    (elemBottom <= docViewBottom) and (elemTop >= docViewTop)
+
 String::toPath = ->
   newString = @replace /([A-Z])/g, ($1) ->
     "/" + $1.toLowerCase()

@@ -1,7 +1,7 @@
 Omphalo.UserThoughtsController = Em.ArrayController.extend
 
   sortProperties: ['bubbledAt'],
-  sortAscending: false
+  sortAscending: true
 
   itemController: 'thought'
 
@@ -38,9 +38,6 @@ Omphalo.UserThoughtsController = Em.ArrayController.extend
         $.each thoughts, (index, thought) ->
           thought.set('stimulation', thought.get('stimulation') + Omphalo.randomInt(1, 3) )
       setTimeout (=>
-        @bubbleTop()
-      ), highestController.get('description').length * 100
-    else
-      setTimeout (=>
-        @bubbleTop()
-      ), 3000
+        if Omphalo.isScrolledIntoView $("#bubble_more")
+          @bubbleTop()
+      ), 500

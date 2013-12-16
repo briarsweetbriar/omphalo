@@ -4,3 +4,5 @@ ul.bubble-list.bubble-list--flushed
   each thought in controller
     if thought.visible
       li = thought-bubble thought=thought
+
+#bubble_more
